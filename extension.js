@@ -12,7 +12,7 @@ function enable() {
     this.separator = new PopupMenu.PopupSeparatorMenuItem();
     this.powerMenu.addMenuItem(this.separator, 0);
     
-    this.light = new PopupMenu.PopupMenuItem("Light");
+    this.light = new PopupMenu.PopupMenuItem("Light Theme");
     this.light.connect('activate', (item, event) => {
         this.reset_ornament();
         this.set_theme("light");
@@ -20,7 +20,7 @@ function enable() {
     });
     this.powerMenu.addMenuItem(this.light, 0);
     
-    this.dark = new PopupMenu.PopupMenuItem("Dark");
+    this.dark = new PopupMenu.PopupMenuItem("Dark Theme");
     this.dark.connect('activate', (item, event) => {
         this.reset_ornament();
         this.set_theme("dark");
