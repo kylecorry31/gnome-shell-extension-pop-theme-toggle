@@ -1,8 +1,11 @@
 # Pop Theme Toggle Gnome Shell Extension
 A shell extension for using the pop theme toggle.
 
+## Requirements
+As of now, this extension relies on the pop-theme-toggle script. Please follow the install instructions here: https://github.com/kylecorry31/pop-theme-toggle
+
 ## Installation
-To install, clone this repo and use make to install
+To install, clone this repo and use make to install (after installing the pop-theme-toggle in requirements)
 
 ```shell
 $ git clone https://github.com/kylecorry31/gnome-shell-extension-pop-theme-toggle
