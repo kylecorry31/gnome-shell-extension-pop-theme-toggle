@@ -16,7 +16,7 @@ function enable() {
     this.light = new PopupMenu.PopupMenuItem("Light");
     this.light.connect('activate', (item, event) => {
         this.reset_ornament();
-        this.set_theme("light");
+        this.set_theme("Pop");
         item.setOrnament(Ornament.DOT);
     });
     this.themeMenu.menu.addMenuItem(this.light, 0);
@@ -24,23 +24,33 @@ function enable() {
     this.dark = new PopupMenu.PopupMenuItem("Dark");
     this.dark.connect('activate', (item, event) => {
         this.reset_ornament();
-        this.set_theme("dark");
+        this.set_theme("Pop-dark");
         item.setOrnament(Ornament.DOT);
     });
     this.themeMenu.menu.addMenuItem(this.dark, 1);
     
     this.reset_ornament();
     this.light.setOrnament(Ornament.DOT);
-    this.set_theme("light");
+    this.set_theme("Pop");
 }
 
 function set_theme(theme) {
-    Util.trySpawn(["pop-theme-toggle", theme]);
-    if(theme == "light") {
+    set_gtk_theme(theme);
+    set_user_theme(theme);
+    if(theme == "Pop") {
         this.themeMenu.label.text = "Light Theme";
-    } else if (theme == "dark") {
+    } else if (theme == "Pop-dark") {
         this.themeMenu.label.text = "Dark Theme";
     }
+}
+
+function set_gtk_theme(theme) {
+    Util.trySpawn(["dconf", "write", "/org/gnome/shell/extensions/user-theme/name", "'" + theme +"'"]);
+    Util.trySpawn(["gdbus", "call", "--session", "--dest", "org.gnome.Shell", "--object-path", "/org/gnome/Shell", "--method", "org.gnome.Shell.Eval", theme]);
+}
+
+function set_user_theme(theme) {
+    Util.trySpawn(["dconf", "write", "/org/gnome/desktop/interface/gtk-theme", "'" + theme +"'"]);
 }
 
 function reset_ornament() {
