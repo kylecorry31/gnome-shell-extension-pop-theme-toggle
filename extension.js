@@ -32,6 +32,7 @@ function enable() {
     this.reset_ornament();
     this.light.setOrnament(Ornament.DOT);
     this.set_theme("Pop");
+    // TODO: Find current theme rather than just set it
 }
 
 function set_theme(theme) {
