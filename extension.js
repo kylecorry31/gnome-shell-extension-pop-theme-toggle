@@ -66,8 +66,9 @@ function set_theme(theme) {
 }
 
 function set_gtk_theme(theme) {
+    Main.setThemeStylesheet("/usr/share/themes/"+theme+"/gnome-shell/gnome-shell.css");
+    Main.loadTheme();
     Util.trySpawn(["dconf", "write", "/org/gnome/shell/extensions/user-theme/name", "'" + theme +"'"]);
-    Util.trySpawn(["gdbus", "call", "--session", "--dest", "org.gnome.Shell", "--object-path", "/org/gnome/Shell", "--method", "org.gnome.Shell.Eval", theme]);
 }
 
 function set_user_theme(theme) {
