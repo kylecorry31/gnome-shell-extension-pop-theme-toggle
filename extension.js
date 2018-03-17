@@ -46,14 +46,15 @@ function enable() {
     this.themeMenu.menu.addMenuItem(this.slim_dark, 3);
     
     this.reset_ornament();
-    this.light.setOrnament(Ornament.DOT);
-    this.set_theme("Pop");
-    // TODO: Find current theme rather than just set it
 }
 
 function set_theme(theme) {
     set_gtk_theme(theme);
     set_user_theme(theme);
+    set_theme_label(theme);
+}
+
+function set_theme_label(theme){
     if(theme == "Pop") {
         this.themeMenu.label.text = "Light Theme";
     } else if (theme == "Pop-dark") {
